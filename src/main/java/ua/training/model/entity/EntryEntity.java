@@ -22,7 +22,7 @@ public class EntryEntity {
 
     public EntryEntity(PersonEntity person, String nickname, String comment,
                        Group group, ContactsEntity contacts, AddressEntity address) {
-        this.id = count++;
+        this.id = ++count;
         this.person = person;
         this.nickname = nickname;
         this.comment = comment;

@@ -4,6 +4,7 @@ package ua.training.controller;
 import ua.training.model.Model;
 import ua.training.model.converter.EntryConverter;
 import ua.training.model.entity.EntryEntity;
+import ua.training.view.Messages;
 import ua.training.view.View;
 
 import java.util.Scanner;
@@ -20,9 +21,10 @@ public class Controller {
 
     public void processUser() {
 
+        view.printMessage(Messages.WELCOME);
         Scanner scanner = new Scanner(System.in);
-        EntryValidator entryValidator = new EntryValidator(scanner, view);
 
+        EntryValidator entryValidator = new EntryValidator(scanner, view);
         EntryEntity entryEntity = EntryConverter.fromDTO(entryValidator.inputEntry());
 
         model.addEntry(entryEntity);

@@ -17,11 +17,12 @@ public class InputValidator {
     }
 
     public String inputStringValue(String message, String regex) {
-        view.printMessage(message);
+        view.printMessage(view.buildMessage(Messages.INPUT, message, Messages.COLON));
         String inputLine;
 
         while(!(scanner.hasNextLine() && (inputLine = scanner.nextLine()).matches(regex))) {
-            view.printMessage(view.buildMessage(Messages.WRONG_INPUT, Messages.NEW_LINE, message));
+            view.printMessage(view.buildMessage(Messages.WRONG_INPUT, Messages.NEW_LINE,
+                                                Messages.INPUT, message, Messages.COLON));
         }
 
         return inputLine;
