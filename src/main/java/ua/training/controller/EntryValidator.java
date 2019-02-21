@@ -47,4 +47,12 @@ public class EntryValidator {
         return new EntryDTO(personDTO, nicknameDTO, commentDTO, groupDTO, contactsDTO, addressDTO);
     }
 
+    public EntryDTO inputEntryNickname(EntryDTO entryDTO) {
+        InputValidator inputValidator = new InputValidator(scanner, view);
+
+        entryDTO.setNickname(inputValidator.inputStringValue(Messages.NICKNAME, Regex.NICKNAME));
+
+        return entryDTO;
+    }
+
 }

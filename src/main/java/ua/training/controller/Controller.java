@@ -3,7 +3,9 @@ package ua.training.controller;
 
 import ua.training.model.Model;
 import ua.training.model.converter.EntryConverter;
+import ua.training.model.dto.EntryDTO;
 import ua.training.model.entity.EntryEntity;
+import ua.training.model.exceptions.NonUniqueNicknameException;
 import ua.training.view.Messages;
 import ua.training.view.View;
 
@@ -20,17 +22,25 @@ public class Controller {
     }
 
     public void processUser() {
-
         view.printMessage(Messages.WELCOME);
         Scanner scanner = new Scanner(System.in);
 
         EntryValidator entryValidator = new EntryValidator(scanner, view);
-        EntryEntity entryEntity = EntryConverter.fromDTO(entryValidator.inputEntry());
-
-        model.addEntry(entryEntity);
-        view.printMessage(entryEntity.toString());
+        addEntryToModel(entryValidator, entryValidator.inputEntry());
 
         scanner.close();
+    }
+
+    public void addEntryToModel(EntryValidator entryValidator, EntryDTO entryDTO) {
+        try {
+            EntryEntity entryEntity = EntryConverter.fromDTO(entryDTO);
+            model.setEntryEntity(entryEntity);
+            view.printMessage(entryEntity.toString());
+        } catch (NonUniqueNicknameException e) {
+            e.printStackTrace();
+            view.printMessage(e.getMessage() + Messages.COLON + e.getNickname());
+            addEntryToModel(entryValidator, entryValidator.inputEntryNickname(entryDTO));
+        }
     }
 
 }

@@ -8,9 +8,6 @@ import java.util.Date;
 
 public class EntryEntity {
 
-    private static int count;
-
-    private int id;
     private PersonEntity person;
     private String nickname;
     private String comment;
@@ -22,7 +19,6 @@ public class EntryEntity {
 
     public EntryEntity(PersonEntity person, String nickname, String comment,
                        Group group, ContactsEntity contacts, AddressEntity address) {
-        this.id = ++count;
         this.person = person;
         this.nickname = nickname;
         this.comment = comment;
@@ -101,8 +97,7 @@ public class EntryEntity {
     public String toString() {
         final StringBuilder stringBuilder = new StringBuilder("Entry {");
 
-        stringBuilder.append(" ID = '").append(id).append('\'');
-        stringBuilder.append(", ").append(person.toString());
+        stringBuilder.append(person.toString());
         stringBuilder.append(", Nickname = '").append(nickname).append('\'');
         stringBuilder.append(", Comment = '").append(comment).append('\'');
         stringBuilder.append(", Group = '").append(group.toString()).append('\'');

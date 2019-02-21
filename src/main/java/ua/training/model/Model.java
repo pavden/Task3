@@ -2,24 +2,21 @@
 package ua.training.model;
 
 import ua.training.model.entity.EntryEntity;
-
-import java.util.ArrayList;
-import java.util.List;
+import ua.training.model.exceptions.NonUniqueNicknameException;
 
 public class Model {
 
-    private List<EntryEntity> noteBook = new ArrayList<>();
+    private EntryEntity entryEntity;
 
-    public EntryEntity getEntry(int id) {
-        return noteBook.get(id);
+    public EntryEntity getEntryEntity() {
+        return entryEntity;
     }
 
-    public void addEntry(EntryEntity entry) {
-        noteBook.add(entry);
-    }
-
-    public int getSize() {
-        return noteBook.size();
+    public void setEntryEntity(EntryEntity entryEntity) throws NonUniqueNicknameException {
+        if (ModelDB.isNicknameUsed(entryEntity.getNickname())) {
+            throw new NonUniqueNicknameException("Non-unique nickname", entryEntity.getNickname());
+        }
+        this.entryEntity = entryEntity;
     }
 
 }
