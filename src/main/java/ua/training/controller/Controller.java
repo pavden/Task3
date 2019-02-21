@@ -38,7 +38,8 @@ public class Controller {
             view.printMessage(entryEntity.toString());
         } catch (NonUniqueNicknameException e) {
             e.printStackTrace();
-            view.printMessage(e.getMessage() + Messages.COLON + e.getNickname());
+            view.printMessage(view.buildMessage(e.getMessage(), Messages.COLON,
+                                                Messages.SPACE, e.getNickname()));
             addEntryToModel(entryValidator, entryValidator.inputEntryNickname(entryDTO));
         }
     }

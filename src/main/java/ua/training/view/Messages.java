@@ -1,28 +1,37 @@
 
 package ua.training.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public interface Messages {
 
-    String WELCOME = "Welcome to \"NOTEBOOK\"!";
-    String INPUT = "Please input ";
-    String WRONG_INPUT = "Wrong input, try again!";
-    String LAST_NAME = "Last name (e.g. Ivanov)";
-    String FIRST_NAME = "First name (e.g. Ivan)";
-    String MIDDLE_NAME = "Middle name (e.g. Ivanovych)";
-    String NICKNAME = "Nickname (e.g. fobos)";
-    String COMMENT = "Comment (any text)";
-    String GROUP = "Group (only Family, Friends or Work)";
-    String HOME_PHONE = "Home phone (+XXXXXXXXXXXX from 7 to 15 digits)";
-    String MOBILE_PHONE_FIRST = "Mobile phone 1 (+XXXXXXXXXXXX from 7 to 15 digits)";
-    String MOBILE_PHONE_SECOND = "Mobile phone 2 (+XXXXXXXXXXXX from 7 to 15 digits)";
-    String EMAIL = "Email (e.g. ivan_ivanov@gmail.com)";
-    String SKYPE = "Skype (iVan_iVan)";
-    String ZIP_CODE = "ZIP code (e.g. 05210)";
-    String CITY = "City (e.g. Kyiv)";
-    String STREET = "Street (e.g. Holosiivskyi prospekt)";
-    String BUILDING = "Building (e.g. 10/12)";
-    String APARTMENT = "Apartment (e.g. 50)";
-    String COLON = ": ";
-    String NEW_LINE = "\n";
+    String MESSAGES_BUNDLE_NAME = "messages";
+    ResourceBundle bundle = ResourceBundle.getBundle(MESSAGES_BUNDLE_NAME,
+                                                     //new Locale("en")); // English
+                                                     new Locale("uk", "UA"));  // Ukrainian
+
+    String WELCOME = bundle.getString("locale.welcome");
+    String INPUT = bundle.getString("locale.input");
+    String WRONG_INPUT = bundle.getString("locale.wrong.input");
+    String LAST_NAME = bundle.getString("locale.last.name");
+    String FIRST_NAME = bundle.getString("locale.first.name");
+    String MIDDLE_NAME = bundle.getString("locale.middle.name");
+    String NICKNAME = bundle.getString("locale.nickname");
+    String COMMENT = bundle.getString("locale.comment");
+    String GROUP = bundle.getString("locale.group");
+    String HOME_PHONE = bundle.getString("locale.home.phone");
+    String MOBILE_PHONE_FIRST = bundle.getString("locale.mobile.phone.first");
+    String MOBILE_PHONE_SECOND = bundle.getString("locale.mobile.phone.second");
+    String EMAIL = bundle.getString("locale.email");
+    String SKYPE = bundle.getString("locale.skype");
+    String ZIP_CODE = bundle.getString("locale.zip.code");
+    String CITY = bundle.getString("locale.city");
+    String STREET = bundle.getString("locale.street");
+    String BUILDING = bundle.getString("locale.building");
+    String APARTMENT = bundle.getString("locale.apartment");
+    String SPACE = bundle.getString("locale.space");
+    String COLON = bundle.getString("locale.colon");
+    String NEW_LINE = bundle.getString("locale.new.line");
 
 }
